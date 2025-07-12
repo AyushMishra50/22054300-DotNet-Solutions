@@ -1,0 +1,100 @@
+What is a RESTful Web Service?
+A RESTful Web Service follows REST architecture, using standard HTTP methods (GET, POST, etc.) for communication. It's stateless and resource-oriented.
+
+ What is a Web API?
+ A Web API is a framework that allows building HTTP services accessible from various clients like browsers or mobile apps.
+
+ What is a Microservice?
+ A Microservice is a small, independent service that performs a specific function and can be deployed and scaled independently.
+
+2. Features of REST Architecture
+Representational State Transfer (REST): Resource-based, uses URIs.
+
+Stateless: Server does not store client context.
+
+Messages: Uses HTTP for requests/responses.
+
+Not restricted to XML: Supports JSON, XML, or any media type.
+
+Microservices Concept: Built as small, independent services using REST APIs.
+
+ 3. Difference between WebService & Web API
+Feature		Web Service		Web API
+Protocol		SOAP (mostly)		HTTP/HTTPS
+Data Format	XML only			JSON, XML, etc.
+Hosting		IIS required		Self-hosting possible
+Lightweight	No				Yes
+
+4. Explain what is HttpRequest & HttpResponse
+Q: What is HttpRequest?
+A: It contains data sent by the client to the server (headers, body, method, etc.).
+
+Q: What is HttpResponse?
+A: It contains the server’s response back to the client (status code, headers, body, etc.).
+
+5. List the Types of Action Verbs in Web API
+HttpGet: Fetch data
+
+HttpPost: Submit new data
+
+HttpPut: Update existing data
+
+HttpDelete: Delete data
+
+Usage:
+
+csharp
+Copy
+Edit
+[HttpGet]
+public IActionResult GetItem() { ... }
+
+[HttpPost]
+public IActionResult AddItem() { ... }
+ 6. Common HttpStatusCodes in Web API
+Status Code	Meaning	ActionResult Equivalent
+200 OK	Success	Ok()
+400 BadRequest	Invalid input	BadRequest()
+401 Unauthorized	No valid auth	Unauthorized()
+500 InternalServerError	Server failure	StatusCode(500)
+
+7. Demonstrate Creation of a Simple Web API
+Controller Example:
+
+csharp
+Copy
+Edit
+[ApiController]
+[Route("api/[controller]")]
+public class ProductsController : ControllerBase
+{
+    [HttpGet]
+    public IActionResult GetAll() => Ok("List of Products");
+
+    [HttpPost]
+    public IActionResult Add() => Ok("Product Added");
+
+    [HttpPut]
+    public IActionResult Update() => Ok("Product Updated");
+
+    [HttpDelete]
+    public IActionResult Delete() => Ok("Product Deleted");
+}
+Inherits from ControllerBase or ApiController
+
+Uses action verbs as attributes
+
+8. Types of Configuration Files in Web API
+For .NET Core:
+
+File	Purpose
+Startup.cs	Middleware pipeline, Dependency Injection setup
+appsettings.json	Stores app configurations (e.g., DB connection)
+launchSettings.json	Configures launch settings for dev environment
+
+For .NET Framework 4.5:
+
+File	Purpose
+Web.config	App settings, connection strings
+Route.config	Custom routing settings for APIs
+WebApi.config	API-specific routes, formatter settings
